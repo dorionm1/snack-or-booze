@@ -12,9 +12,54 @@ import SnackDrinkForm from "./SnackDrinkForm";
 import NotFound from "./NotFound";
 
 function App() {
+  const initialState = {
+    id: '',
+    type: 'snack',
+    name: '',
+    description: '',
+    recipe: '',
+    serve: ''
+  }
+
   const [isLoading, setIsLoading] = useState(true);
   const [snacks, setSnacks] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [food, setFood] = useState(initialState);
+
+  //Generates snack/drink id based on snack/drink name user enters. 
+  const generateIdFromName = (name) => {
+    return name ? name.toLowerCase().replace(/\s+/g, '-') : '';
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFood({
+      ...food,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if(food.type === "snack"){
+      try {
+        await SnackOrBoozeApi.addSnack(food)
+        setSnacks([...snacks, food]);
+        setFood(initialState)
+      } catch (error) {
+        console.error('Error adding snack:', error);
+      }
+    }
+    if(food.type === "drink"){
+      try {
+        await SnackOrBoozeApi.addDrink(food)
+        setDrinks([...drinks, food]);
+        setFood(initialState)
+      } catch (error) {
+        console.error('Error adding drink:', error);
+      }
+    }
+  }
   
   useEffect(() => {
     async function getSnacks() {
@@ -34,6 +79,10 @@ function App() {
     getDrinks();
   }, []);
 
+  useEffect(() => {
+    const generatedId = generateIdFromName(food.name);
+    setFood(prevState => ({ ...prevState, id: generatedId }));
+  }, [food.name]);
 
   if (isLoading) {
     return <p>Loading &hellip;</p>;
@@ -61,7 +110,7 @@ function App() {
               <Drink items={drinks} cantFind="/drinks" />
             </Route>
             <Route>
-              <SnackDrinkForm/>
+              <SnackDrinkForm handleChange={handleChange} handleSubmit={handleSubmit} food={food}/>
             </Route>
             <Route exact path="/snacks/:id">
               <Redirect to="/snacks" />
