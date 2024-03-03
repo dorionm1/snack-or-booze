@@ -35,6 +35,30 @@
       "description": "The best Drink around. Comes in Blue, Purple, Green and more!",
       "recipe": "Sugar & water is pretty much all!",
       "serve": "1-2 people at a time. "
+    },
+    {
+      "id": "bud-light",
+      "type": "drink",
+      "name": "Bud Light",
+      "description": "Best Beer in Town!",
+      "recipe": "Hard Work",
+      "serve": "3-4 People"
+    },
+    {
+      "id": "strawberry-smoothie",
+      "type": "drink",
+      "name": "Strawberry Smoothie",
+      "description": "Strawberry Smoothie Delight",
+      "recipe": "Frozen Strawberries, Frozen Bananas, Yogurt, Flax. ",
+      "serve": "1 person"
+    },
+    {
+      "id": "test-drink",
+      "type": "drink",
+      "name": "Test Drink",
+      "description": "This is a test Drink",
+      "recipe": "Testing testing and more testing",
+      "serve": "2-5 tests"
     }
   ],
   "snacks": [
@@ -74,6 +98,22 @@
       "description": "Apple",
       "recipe": "Apple",
       "serve": "1"
+    },
+    {
+      "id": "avacado-&-toast",
+      "type": "snack",
+      "name": "Avacado & Toast",
+      "description": "Delicious Green Veggy on a slice of wheat bread. ",
+      "recipe": "1 Avocado, 2 slices of bread (Well Toasted). ",
+      "serve": "1-2 people"
+    },
+    {
+      "id": "test-snack",
+      "type": "snack",
+      "name": "Test Snack",
+      "description": "This is a test Snack",
+      "recipe": "Testing, Testing, and more testing",
+      "serve": "1-2 people"
     }
   ]
 }

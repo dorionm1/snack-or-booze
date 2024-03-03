@@ -15,7 +15,7 @@ function NavBar({ snacks, drinks }) {
           <NavItem>
             <NavLink to="/snacks">{snacks.length ? `(${snacks.length})` : ''}Snacks</NavLink>
             <NavLink to="/drinks">{drinks.length ? `(${drinks.length})` : ''}Drinks</NavLink>
-            <NavLink to="/food/add">Add Food!</NavLink>
+            <NavLink to="/food/add">Add Menu Item!</NavLink>
           </NavItem>
         </Nav>
       </Navbar>
